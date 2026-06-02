@@ -1,9 +1,4 @@
 <!DOCTYPE HTML>
-<!--
-	Massively by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
 <html>
 	<head>
 		<title>Nung Yang CV</title>
@@ -34,12 +29,24 @@
 			}
 			
 			#main header p {
-				margin-bottom: 0.25rem !important;
+				margin-bottom: 0.2rem !important;
 			}
 			
 			#main header + p {
-				margin-top: 0.5rem !important;
+				margin-top: 0.2rem !important;
 				padding-top: 0 !important;
+			}
+
+			#main > p {
+				margin-bottom: 0.5rem !important;
+				padding-bottom: 0.5rem !important;
+				padding-top: 0.5rem !important;
+			}
+
+			#wrapper #main ul.actions.special {
+				padding-top: 0.3rem !important;
+				margin-top: 0.2rem !important;
+
 			}
 		</style>
 	</head>
@@ -56,7 +63,7 @@
 				<!-- Nav -->
 					<nav id="nav">
 						<ul class="links">
-							<li><a href="index.html"> < Back to projects</a></li>
+							<li><a href="index.html#nav"> < Back to projects</a></li>
 							<li class="active"><a href="uk-petitions.html">UK Parliament Petitions Dashboard</a></li>
 						</ul>
 						<ul class="icons">
@@ -74,20 +81,24 @@
 
 						<!-- Text -->
 							<header>
-								<h3>Project description and motivation</h3>
+								<h3>Project description</h3>
 							</header>
-							<p>The UK Government and Parliament Petitions website hosts numerous petitions, each calling for a change in UK Government policy or legislation.
-								Unlike websites such as change.org, these are only open to British citizens and UK residents.
-								Any petition that has at least 10,000 signatures receives a written response from the government, while those that have at least 100,000 signatures are considered for debate in Parliament.
-								<br><br>
-								Each petition webpage has data on the number of people who signed the petition in each constituency.
-								This kind of information is crucial to helping MPs better represent their constituents, but
-								as it stands, it is difficult for MPs and their staff to see key details about their constituency at a glance.
+							<p>The UK Government and Parliament Petitions website hosts numerous petitions,
+								each calling for a change in UK Government policy or legislation.
+								Unlike other petition websites, any petition that has over 10,000 signatures receives a written response from the government,
+								while those that have over 100,000 signatures are considered for debate in Parliament.
+							</p>
+							<p>
+								Data on the number of signatures for each petition is publicly available at the constituency level,
+								but it is difficult to get an overview of petiton data relating to a specific constituency.
+								This information would help MPs better understand and represent the views of their constituents.
 								The purpose of this project is to make this information more easily accessible to MPs and their staff.
 							</p>
 						
 						<ul class="actions special">
-							<li><a href="https://uk-petitions-dashboard.up.railway.app/" class="button">Go to dashboard</a></li>
+							<li><a href="https://uk-petitions-dashboard.up.railway.app/"
+								class="button"
+								style="font-size: 1rem";>Go to dashboard</a></li>
 						</ul>
 					</div>
 
