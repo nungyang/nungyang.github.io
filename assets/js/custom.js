@@ -3,7 +3,12 @@ $(window).on('load', function() {
     var snapping = false;
     var introHeight = $('#intro').outerHeight();
 
-    $('#nav').hide();
+    if (window.location.hash) {
+        $('#nav').show();
+        window.scrollTo({ top: $('#intro').outerHeight() - $('#nav').outerHeight() - 50 });
+    } else {
+        $('#nav').hide();
+    }
 
     function snapForward() {
         snapping = true;
