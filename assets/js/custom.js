@@ -8,14 +8,14 @@ $(window).on('load', function() {
     function snapForward() {
         snapping = true;
         $('#nav').show();
-        $('html').animate({ scrollTop: introHeight }, 300);
+        $('html').animate({ scrollTop: $('#intro').outerHeight() - $('#nav').outerHeight() - 50 }, 400);
         setTimeout(function() { snapping = false; }, 1000);
     }
 
     function snapBack() {
         snapping = true;
         $('#nav').hide();
-        $('html').animate({ scrollTop: 0 }, 300);
+        $('html').animate({ scrollTop: 0 }, 200);
         setTimeout(function() { snapping = false; }, 1000);
     }
 
