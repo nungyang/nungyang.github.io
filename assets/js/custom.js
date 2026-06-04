@@ -27,10 +27,11 @@ $(window).on('load', function() {
     $(window).on('wheel', function(e) {
         if (snapping) return;
         var scrollTop = window.pageYOffset;
+        var snapTarget = $('#intro').outerHeight() - $('#nav').outerHeight() - 50;
 
-        if (e.originalEvent.deltaY > 0 && scrollTop < introHeight) {
+        if (e.originalEvent.deltaY > 0 && scrollTop < snapTarget) {
             snapForward();
-        } else if (e.originalEvent.deltaY < 0 && scrollTop <= introHeight) {
+        } else if (e.originalEvent.deltaY < 0 && scrollTop <= snapTarget - 100) {
             snapBack();
         }
     });
