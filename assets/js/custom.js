@@ -1,17 +1,21 @@
+if (sessionStorage.getItem('scrollToProjects')) {
+    document.body.style.visibility = 'hidden';
+}
+
 $(window).on('load', function() {
 
     var snapping = false;
-    var introHeight = $('#intro').outerHeight();
 
-    if (window.location.hash) {
+    if (sessionStorage.getItem('scrollToProjects')) {
+        sessionStorage.removeItem('scrollToProjects');
         $('#nav').show();
-        setTimeout(function() {
-            var target = $('#intro').outerHeight() - $('#nav').outerHeight() - 50;
-            window.scrollTo({ top: target });
-        }, 50);
+        var target = $('#intro').outerHeight() - $('#nav').outerHeight() - 50;
+        window.scrollTo({ top: target });
+        document.body.style.visibility = 'visible';
     } else {
         $('#nav').hide();
         window.scrollTo({ top: 0 });
+        document.body.style.visibility = 'visible';
     }
 
     function snapForward() {
@@ -24,8 +28,8 @@ $(window).on('load', function() {
     function snapBack() {
         snapping = true;
         $('#nav').hide();
-        $('html').animate({ scrollTop: 0 }, 200);
-        setTimeout(function() { snapping = false; }, 1000);
+        $('html, body').scrollTop(0);
+        setTimeout(function() { snapping = false; }, 500);
     }
 
     $(window).on('wheel', function(e) {
@@ -35,7 +39,7 @@ $(window).on('load', function() {
 
         if (e.originalEvent.deltaY > 0 && scrollTop < snapTarget) {
             snapForward();
-        } else if (e.originalEvent.deltaY < 0 && scrollTop <= snapTarget - 100) {
+        } else if (e.originalEvent.deltaY < 0 && scrollTop <= snapTarget) {
             snapBack();
         }
     });
@@ -46,8 +50,3 @@ $(window).on('load', function() {
     });
 
 });
-
-console.log('intro height:', $('#intro').outerHeight());
-console.log('nav height:', $('#nav').outerHeight());
-console.log('scroll target:', $('#intro').outerHeight() - $('#nav').outerHeight() - 50);
-console.log('current scroll:', window.pageYOffset);
