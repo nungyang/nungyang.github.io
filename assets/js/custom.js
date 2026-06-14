@@ -5,9 +5,14 @@ $(window).on('load', function() {
 
     if (window.location.hash) {
         $('#nav').show();
-        window.scrollTo({ top: $('#intro').outerHeight() - $('#nav').outerHeight() - 50 });
+        window.scrollTo({ top: 0 }); // reset first
+        setTimeout(function() {
+            var target = $('#intro').outerHeight() - $('#nav').outerHeight() - 50;
+            window.scrollTo({ top: target });
+        }, 200); // wait for page to fully render
     } else {
         $('#nav').hide();
+        window.scrollTo({ top: 0 });
     }
 
     function snapForward() {
