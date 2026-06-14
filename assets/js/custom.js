@@ -5,9 +5,7 @@ $(window).on('load', function() {
 
     if (window.location.hash) {
         $('#nav').show();
-        setTimeout(function() {
-            window.scrollTo({ top: $('#intro').outerHeight() - $('#nav').outerHeight() - 50 });
-        }, 100);
+        window.scrollTo({ top: $('#intro').outerHeight() - $('#nav').outerHeight() - 50 });
     } else {
         $('#nav').hide();
     }
@@ -22,8 +20,8 @@ $(window).on('load', function() {
     function snapBack() {
         snapping = true;
         $('#nav').hide();
-        $('html, body').scrollTop(0);
-        setTimeout(function() { snapping = false; }, 500);
+        $('html').animate({ scrollTop: 0 }, 200);
+        setTimeout(function() { snapping = false; }, 1000);
     }
 
     $(window).on('wheel', function(e) {
@@ -33,7 +31,7 @@ $(window).on('load', function() {
 
         if (e.originalEvent.deltaY > 0 && scrollTop < snapTarget) {
             snapForward();
-        } else if (e.originalEvent.deltaY < 0 && scrollTop <= snapTarget) {
+        } else if (e.originalEvent.deltaY < 0 && scrollTop <= snapTarget - 100) {
             snapBack();
         }
     });
