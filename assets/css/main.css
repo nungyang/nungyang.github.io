@@ -3397,10 +3397,6 @@ input, select, textarea {
 			text-align: center;
 		}
 
-		#intro + #header {
-			margin-top: -20rem;
-		}
-
 			#intro + #header .logo {
 				-moz-transform: translateY(2rem);
 				-webkit-transform: translateY(2rem);
@@ -3520,6 +3516,7 @@ input, select, textarea {
 		position: relative;
 		text-align: center;
 		z-index: 2;
+		scroll-margin-top: 20rem;
 	}
 
 		#header input, #header select, #header textarea {
