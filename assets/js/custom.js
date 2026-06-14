@@ -5,11 +5,10 @@ $(window).on('load', function() {
 
     if (window.location.hash) {
         $('#nav').show();
-        window.scrollTo({ top: 0 }); // reset first
         setTimeout(function() {
             var target = $('#intro').outerHeight() - $('#nav').outerHeight() - 50;
             window.scrollTo({ top: target });
-        }, 200); // wait for page to fully render
+        }, 50);
     } else {
         $('#nav').hide();
         window.scrollTo({ top: 0 });
@@ -47,3 +46,8 @@ $(window).on('load', function() {
     });
 
 });
+
+console.log('intro height:', $('#intro').outerHeight());
+console.log('nav height:', $('#nav').outerHeight());
+console.log('scroll target:', $('#intro').outerHeight() - $('#nav').outerHeight() - 50);
+console.log('current scroll:', window.pageYOffset);
