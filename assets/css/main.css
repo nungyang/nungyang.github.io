@@ -2671,12 +2671,6 @@ input, select, textarea {
 			transition: transform 0.2s ease-out;
 		}
 
-		a.image:hover img {
-			-moz-transform: scale(1.05);
-			-webkit-transform: scale(1.05);
-			-ms-transform: scale(1.05);
-			transform: scale(1.05);
-		}
 
 /* Actions */
 
@@ -3575,11 +3569,11 @@ input, select, textarea {
 			visibility: visible;
 		}
 
-			#header .logo:hover {
-				border-color: #18bfef !important;
-				color: #18bfef !important;
-			}
-
+		#header .logo:hover {
+			color: #ffffff !important;
+			border-color: #ffffff !important;
+		}
+		
 		@media screen and (max-width: 980px) {
 
 			#header {
