@@ -7,7 +7,7 @@ $(window).on('load', function() {
     var snapping = false;
 
     function getSnapTarget() {
-        return $('#intro').outerHeight() - $('#nav').outerHeight() + 60.5;
+        return $('#intro').outerHeight() - $('#nav').outerHeight() + 64;
     }
 
     if (sessionStorage.getItem('scrollToProjects')) {
