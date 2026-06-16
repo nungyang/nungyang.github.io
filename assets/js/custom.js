@@ -2,7 +2,7 @@ if (sessionStorage.getItem('scrollToProjects')) {
     document.body.style.visibility = 'hidden';
 }
 
-$('body').css('overflow', 'hidden');
+$('html').css('overflow', 'hidden');
 
 $(window).on('load', function() {
 
@@ -18,7 +18,7 @@ $(window).on('load', function() {
         $('#nav').show();
         window.scrollTo({ top: getSnapTarget() });
         document.body.style.visibility = 'visible';
-        $('body').css('overflow', '');
+        $('html').css('overflow', '');
         hasSnappedForward = true;
     } else {
         $('#nav').hide();
@@ -30,18 +30,19 @@ $(window).on('load', function() {
         snapping = true;
         hasSnappedForward = true;
         $('#nav').show();
-        window.scrollTo({ top: getSnapTarget() });
-        setTimeout(function() {
-            $('body').css('overflow', '');
-            snapping = false;
-        }, 1150);
+        $('html').animate({ scrollTop: getSnapTarget() }, 400, function() {
+            setTimeout(function() {
+                $('html').css('overflow', '');
+                snapping = false;
+            }, 600);
+        });
     }
 
     function snapBack() {
         snapping = true;
         hasSnappedForward = false;
         $('#nav').hide();
-        $('body').css('overflow', 'hidden');
+        $('html').css('overflow', 'hidden');
         $('html, body').scrollTop(0);
         setTimeout(function() { snapping = false; }, 500);
     }
