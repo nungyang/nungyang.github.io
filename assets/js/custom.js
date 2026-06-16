@@ -2,9 +2,12 @@ if (sessionStorage.getItem('scrollToProjects')) {
     document.body.style.visibility = 'hidden';
 }
 
+$('body').css('overflow', 'hidden');
+
 $(window).on('load', function() {
 
     var snapping = false;
+    var hasSnappedForward = false;
 
     function getSnapTarget() {
         return $('#intro').outerHeight() - $('#nav').outerHeight() + 64;
@@ -15,6 +18,8 @@ $(window).on('load', function() {
         $('#nav').show();
         window.scrollTo({ top: getSnapTarget() });
         document.body.style.visibility = 'visible';
+        $('body').css('overflow', '');
+        hasSnappedForward = true;
     } else {
         $('#nav').hide();
         window.scrollTo({ top: 0 });
@@ -23,29 +28,35 @@ $(window).on('load', function() {
 
     function snapForward() {
         snapping = true;
+        hasSnappedForward = true;
         $('#nav').show();
-        $('html').animate({ scrollTop: getSnapTarget() }, 400);
-        setTimeout(function() { snapping = false; }, 1000);
+        window.scrollTo({ top: getSnapTarget() });
+        setTimeout(function() {
+            $('body').css('overflow', '');
+            snapping = false;
+        }, 600);
     }
 
     function snapBack() {
         snapping = true;
+        hasSnappedForward = false;
         $('#nav').hide();
+        $('body').css('overflow', 'hidden');
         $('html, body').scrollTop(0);
         setTimeout(function() { snapping = false; }, 500);
     }
 
-    $(window).on('wheel', function(e) {
+    window.addEventListener('wheel', function(e) {
         if (snapping) return;
         var scrollTop = window.pageYOffset;
         var snapTarget = getSnapTarget();
 
-        if (e.originalEvent.deltaY > 0 && scrollTop < snapTarget) {
+        if (e.deltaY > 0 && !hasSnappedForward) {
             snapForward();
-        } else if (e.originalEvent.deltaY < 0 && scrollTop <= snapTarget) {
+        } else if (e.deltaY < 0 && scrollTop <= snapTarget && hasSnappedForward) {
             snapBack();
         }
-    });
+    }, { passive: false });
 
     $('.scrolly').on('click', function(e) {
         e.preventDefault();
