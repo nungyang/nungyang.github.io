@@ -7,13 +7,13 @@ $(window).on('load', function() {
     var snapping = false;
 
     function getSnapTarget() {
-        return $('#intro').outerHeight() - $('#nav').outerHeight() + 59;
+        return $('#intro').outerHeight() - $('#nav').outerHeight() + 60.5;
     }
 
     if (sessionStorage.getItem('scrollToProjects')) {
         sessionStorage.removeItem('scrollToProjects');
         $('#nav').show();
-        $('html').animate({ scrollTop: getSnapTarget() }, 0);
+        window.scrollTo({ top: getSnapTarget() });
         document.body.style.visibility = 'visible';
     } else {
         $('#nav').hide();
@@ -24,7 +24,7 @@ $(window).on('load', function() {
     function snapForward() {
         snapping = true;
         $('#nav').show();
-        $('html').animate({ scrollTop: getSnapTarget() }, 120);
+        $('html').animate({ scrollTop: getSnapTarget() }, 400);
         setTimeout(function() { snapping = false; }, 1000);
     }
 
