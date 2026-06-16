@@ -10,7 +10,7 @@ $(window).on('load', function() {
     var hasSnappedForward = false;
 
     function getSnapTarget() {
-        return $('#intro').outerHeight() - $('#nav').outerHeight() + 64;
+        return $('#intro').outerHeight() - $('#nav').outerHeight() + 60.5;
     }
 
     if (sessionStorage.getItem('scrollToProjects')) {
@@ -34,7 +34,7 @@ $(window).on('load', function() {
         setTimeout(function() {
             $('body').css('overflow', '');
             snapping = false;
-        }, 600);
+        }, 1150);
     }
 
     function snapBack() {
