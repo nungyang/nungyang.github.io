@@ -2620,17 +2620,19 @@ input, select, textarea {
 
 		.image.fit {
 			display: block;
-			margin: 2.5rem 0;
+			margin: 1rem 0;
 			width: 100%;
 		}
 
-			.image.fit:first-child {
-				margin-top: 0;
-			}
+		.image.fit:first-child {
+			margin-top: 0;
+		}
 
-			.image.fit img {
-				width: 100%;
-			}
+		.image.fit img {
+			width: 100%;
+			height: 150px;
+			object-fit: contain;
+		}
 
 		.image.main {
 			display: block;
@@ -3864,6 +3866,8 @@ input, select, textarea {
 				border-style: solid;
 				border-top-width: 2px;
 				text-align: center;
+				display: flex;
+				flex-direction: column;
 			}
 
 				#main > .posts > article > :last-child {
@@ -4734,4 +4738,16 @@ input, select, textarea {
 
 body {
 	transition: opacity 0.1s ease;
+}
+
+#main > .posts > article header {
+    min-height: 2rem;
+}
+
+#main > .posts > article h6 {
+    min-height: 2rem;
+}
+
+#main > .posts > article ul.actions {
+	margin-top: 2rem;
 }
