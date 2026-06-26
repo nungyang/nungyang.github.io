@@ -3453,7 +3453,7 @@ input, select, textarea {
 				}
 
 				#intro + #header {
-					margin-top: -14rem;
+					margin-top: 0rem;
 				}
 
 		}
@@ -3579,6 +3579,8 @@ input, select, textarea {
 			#header {
 				height: 14rem;
 				padding-bottom: 4rem;
+				background-color: #1e252d;
+				z-index: 10;
 			}
 
 		}
