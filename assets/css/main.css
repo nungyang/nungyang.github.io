@@ -2651,7 +2651,7 @@ input, select, textarea {
 		@media screen and (max-width: 736px) {
 
 			.image.fit {
-				margin: 2rem 0;
+				margin: 0.25rem 0;
 			}
 
 			.image.main {
@@ -3802,7 +3802,7 @@ input, select, textarea {
 			@media screen and (max-width: 736px) {
 
 				#main > .post {
-					padding: 4rem 2rem 2rem 2rem ;
+					padding: 2rem 2rem 2rem 2rem ;
 				}
 
 					#main > .post header.major > .date {
