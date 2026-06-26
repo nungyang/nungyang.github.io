@@ -3477,7 +3477,7 @@ input, select, textarea {
 				}
 
 				#intro .actions {
-					display: none;
+					display: flex;
 				}
 
 		}
@@ -4491,7 +4491,7 @@ input, select, textarea {
 		display: none;
 		position: fixed;
 		top: 0.75rem;
-		right: 0.75rem;
+		left: 0.75rem;
 		border: 0;
 		color: #ffffff;
 		font-family: "Source Sans Pro", Helvetica, sans-serif;
@@ -4549,10 +4549,10 @@ input, select, textarea {
 		}
 
 	#navPanel {
-		-moz-transform: translateX(20rem);
-		-webkit-transform: translateX(20rem);
-		-ms-transform: translateX(20rem);
-		transform: translateX(20rem);
+		-moz-transform: translateX(-20rem);
+		-webkit-transform: translateX(-20rem);
+		-ms-transform: translateX(-20rem);
+		transform: translateX(-20rem);
 		-moz-transition: -moz-transform 0.5s ease, box-shadow 0.5s ease, visibility 0.5s;
 		-webkit-transition: -webkit-transform 0.5s ease, box-shadow 0.5s ease, visibility 0.5s;
 		-ms-transition: -ms-transform 0.5s ease, box-shadow 0.5s ease, visibility 0.5s;
@@ -4567,7 +4567,7 @@ input, select, textarea {
 		overflow-y: auto;
 		padding: 3rem 2rem;
 		position: fixed;
-		right: 0;
+		left: 0;
 		top: 0;
 		visibility: hidden;
 		width: 20rem;
