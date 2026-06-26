@@ -54,7 +54,7 @@ $(window).on('load', function() {
 
         if (e.deltaY > 0 && !hasSnappedForward) {
             snapForward();
-        } else if (e.deltaY < 0 && scrollTop <= snapTarget && hasSnappedForward) {
+        } else if (e.deltaY < 0 && scrollTop <= snapTarget - (window.innerWidth <= 736 ? 50 : 180) && hasSnappedForward) {
             snapBack();
         }
     }, { passive: false });
