@@ -4749,9 +4749,8 @@ body {
 }
 
 @media screen and (max-width: 768px) {
-    #intro {
-        justify-content: flex-start !important;
-        padding-top: 8rem;
+    .intro-top {
+        margin-top: -2rem;
     }
 }
 
