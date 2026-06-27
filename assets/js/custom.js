@@ -65,4 +65,34 @@ $(window).on('load', function() {
         }
     }, { passive: false });
 
-    var touchStartY
+    var touchStartY = 0;
+
+    window.addEventListener('touchstart', function(e) {
+        touchStartY = e.touches[0].clientY;
+    }, { passive: true });
+
+    window.addEventListener('touchend', function(e) {
+        if (snapping) return;
+
+        if (!hasSnappedForward) {
+            var touchEndY = e.changedTouches[0].clientY;
+            var diff = touchStartY - touchEndY;
+            if (diff > 30) {
+                snapForward();
+            }
+        }
+    }, { passive: true });
+
+    window.addEventListener('scroll', function() {
+        if (!hasSnappedForward || snapping) return;
+        if (window.pageYOffset <= 50) {
+            snapBack();
+        }
+    });
+
+    $('.scrolly').on('click', function(e) {
+        e.preventDefault();
+        snapForward();
+    });
+
+});
