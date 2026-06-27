@@ -4753,3 +4753,9 @@ body {
         margin-bottom: 2rem;
     }
 }
+
+@media screen and (max-height: 480px) {
+    .intro-bottom {
+        display: none;
+    }
+}
