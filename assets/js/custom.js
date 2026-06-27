@@ -64,6 +64,27 @@ $(window).on('load', function() {
         }
     }, { passive: false });
 
+    var touchStartY = 0;
+
+    window.addEventListener('touchstart', function(e) {
+        touchStartY = e.touches[0].clientY;
+    }, { passive: true });
+
+    window.addEventListener('touchend', function(e) {
+        var touchEndY = e.changedTouches[0].clientY;
+        var diff = touchStartY - touchEndY;
+
+        if (snapping) return;
+        var scrollTop = window.pageYOffset;
+        var snapTarget = getSnapTarget();
+
+        if (diff > 30 && !hasSnappedForward) {
+            snapForward();
+        } else if (diff < -30 && scrollTop <= snapTarget - (window.innerWidth <= 736 ? 50 : 180) && hasSnappedForward) {
+            snapBack();
+        }
+    }, { passive: true });
+
     $('.scrolly').on('click', function(e) {
         e.preventDefault();
         snapForward();
