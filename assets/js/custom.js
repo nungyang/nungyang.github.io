@@ -95,7 +95,7 @@ $(window).on('load', function() {
 
     window.addEventListener('scroll', function() {
         if (!hasSnappedForward || snapping) return;
-        if (window.pageYOffset <= 350) {
+        if (window.pageYOffset <= 400) {
             snapBack();
         }
     });
