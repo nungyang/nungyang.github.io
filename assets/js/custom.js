@@ -4,9 +4,7 @@ if (sessionStorage.getItem('scrollToProjects')) {
 
 var isMobile = window.innerWidth <= 768;
 
-if (!isMobile) {
-    $('html').css('overflow', 'hidden');
-}
+$('html').css('overflow', 'hidden');
 
 $(window).on('load', function() {
 
@@ -30,7 +28,7 @@ $(window).on('load', function() {
         $('#nav').css('display', 'flex');
         window.scrollTo({ top: getSnapTarget() });
         document.body.style.visibility = 'visible';
-        if (!isMobile) $('html').css('overflow', '');
+        $('html').css('overflow', '');
         hasSnappedForward = true;
     } else {
         $('#nav').hide();
@@ -44,7 +42,7 @@ $(window).on('load', function() {
         $('#nav').css('display', 'flex');
         $('html').animate({ scrollTop: getSnapTarget() }, 400, function() {
             if (window.innerHeight <= 450) {
-                window.scrollBy(0, 40);
+                window.scrollBy(0, 0);
             }
             setTimeout(function() {
                 $('html').css('overflow', '');
@@ -74,14 +72,33 @@ $(window).on('load', function() {
         }
     }, { passive: false });
 
-    if (!isMobile) {
-        window.addEventListener('scroll', function() {
-            if (!hasSnappedForward || snapping) return;
-            if (window.pageYOffset <= 50) {
-                snapBack();
-            }
-        });
-    }
+    var touchStartY = 0;
+
+    window.addEventListener('touchstart', function(e) {
+        touchStartY = e.touches[0].clientY;
+    }, { passive: true });
+
+    window.addEventListener('touchend', function(e) {
+        var touchEndY = e.changedTouches[0].clientY;
+        var diff = touchStartY - touchEndY;
+
+        if (snapping) return;
+        var scrollTop = window.pageYOffset;
+        var snapTarget = getSnapTarget();
+
+        if (diff > 30 && !hasSnappedForward) {
+            snapForward();
+        } else if (diff < -30 && scrollTop <= snapTarget - 50 && hasSnappedForward) {
+            snapBack();
+        }
+    }, { passive: true });
+
+    window.addEventListener('scroll', function() {
+        if (!hasSnappedForward || snapping) return;
+        if (window.pageYOffset <= 50) {
+            snapBack();
+        }
+    });
 
     $('.scrolly').on('click', function(e) {
         e.preventDefault();
