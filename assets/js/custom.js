@@ -72,16 +72,17 @@ $(window).on('load', function() {
     }, { passive: true });
 
     window.addEventListener('touchend', function(e) {
-        var touchEndY = e.changedTouches[0].clientY;
-        var diff = touchStartY - touchEndY;
-
         if (snapping) return;
         var scrollTop = window.pageYOffset;
         var snapTarget = getSnapTarget();
 
-        if (diff > 30 && !hasSnappedForward) {
-            snapForward();
-        } else if (diff < -30 && scrollTop <= snapTarget + 200 && hasSnappedForward) {
+        if (!hasSnappedForward) {
+            var touchEndY = e.changedTouches[0].clientY;
+            var diff = touchStartY - touchEndY;
+            if (diff > 30) {
+                snapForward();
+            }
+        } else if (scrollTop < 50) {
             snapBack();
         }
     }, { passive: true });
