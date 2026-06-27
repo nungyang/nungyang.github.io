@@ -78,7 +78,7 @@ $(window).on('load', function() {
         var scrollTop = window.pageYOffset;
         var snapTarget = getSnapTarget();
 
-        if (diff > 30 && !hasSnappedForward) {
+        if (diff > 10 && !hasSnappedForward) {
             snapForward();
         } else if (diff < -30 && scrollTop <= snapTarget - (window.innerWidth <= 736 ? 50 : 180) && hasSnappedForward) {
             snapBack();
