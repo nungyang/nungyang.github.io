@@ -65,31 +65,4 @@ $(window).on('load', function() {
         }
     }, { passive: false });
 
-    var touchStartY = 0;
-
-    window.addEventListener('touchstart', function(e) {
-        touchStartY = e.touches[0].clientY;
-    }, { passive: true });
-
-    window.addEventListener('touchend', function(e) {
-        if (snapping) return;
-        var scrollTop = window.pageYOffset;
-        var snapTarget = getSnapTarget();
-
-        if (!hasSnappedForward) {
-            var touchEndY = e.changedTouches[0].clientY;
-            var diff = touchStartY - touchEndY;
-            if (diff > 30) {
-                snapForward();
-            }
-        } else if (scrollTop < -10) {
-            snapBack();
-        }
-    }, { passive: true });
-
-    $('.scrolly').on('click', function(e) {
-        e.preventDefault();
-        snapForward();
-    });
-
-});
+    var touchStartY
