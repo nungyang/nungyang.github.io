@@ -81,7 +81,7 @@ $(window).on('load', function() {
 
         if (diff > 30 && !hasSnappedForward) {
             snapForward();
-        } else if (diff < -30 && scrollTop <= snapTarget - 50 && hasSnappedForward) {
+        } else if (diff < -30 && scrollTop <= snapTarget + 200 && hasSnappedForward) {
             snapBack();
         }
     }, { passive: true });
