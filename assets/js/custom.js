@@ -2,7 +2,11 @@ if (sessionStorage.getItem('scrollToProjects')) {
     document.body.style.visibility = 'hidden';
 }
 
-$('html').css('overflow', 'hidden');
+var isMobile = window.innerWidth <= 768;
+
+if (!isMobile) {
+    $('html').css('overflow', 'hidden');
+}
 
 $(window).on('load', function() {
 
@@ -19,7 +23,7 @@ $(window).on('load', function() {
         $('#nav').css('display', 'flex');
         window.scrollTo({ top: getSnapTarget() });
         document.body.style.visibility = 'visible';
-        $('html').css('overflow', '');
+        if (!isMobile) $('html').css('overflow', '');
         hasSnappedForward = true;
     } else {
         $('#nav').hide();
@@ -65,30 +69,14 @@ $(window).on('load', function() {
         }
     }, { passive: false });
 
-    var touchStartY = 0;
-
-    window.addEventListener('touchstart', function(e) {
-        touchStartY = e.touches[0].clientY;
-    }, { passive: true });
-
-    window.addEventListener('touchend', function(e) {
-        if (snapping) return;
-
-        if (!hasSnappedForward) {
-            var touchEndY = e.changedTouches[0].clientY;
-            var diff = touchStartY - touchEndY;
-            if (diff > 30) {
-                snapForward();
+    if (!isMobile) {
+        window.addEventListener('scroll', function() {
+            if (!hasSnappedForward || snapping) return;
+            if (window.pageYOffset <= 50) {
+                snapBack();
             }
-        }
-    }, { passive: true });
-
-    window.addEventListener('scroll', function() {
-        if (!hasSnappedForward || snapping) return;
-        if (window.pageYOffset <= 50) {
-            snapBack();
-        }
-    });
+        });
+    }
 
     $('.scrolly').on('click', function(e) {
         e.preventDefault();
