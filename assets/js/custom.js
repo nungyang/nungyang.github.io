@@ -14,7 +14,14 @@ $(window).on('load', function() {
     var hasSnappedForward = false;
 
     function getSnapTarget() {
-        var offset = window.innerHeight <= 500 ? 150 : 60.5;
+        var offset;
+        if (window.innerHeight <= 450) {
+            offset = 80;
+        } else if (window.innerHeight <= 600) {
+            offset = 110;
+        } else {
+            offset = 60.5;
+        }
         return $('#intro').outerHeight() - $('#nav').outerHeight() + offset;
     }
 
@@ -37,9 +44,7 @@ $(window).on('load', function() {
         $('#nav').css('display', 'flex');
         $('html').animate({ scrollTop: getSnapTarget() }, 400, function() {
             if (window.innerHeight <= 450) {
-                window.scrollBy(0, 65);
-            } else if (window.innerHeight <= 600) {
-                window.scrollBy(0, 50);
+                window.scrollBy(0, 40);
             }
             setTimeout(function() {
                 $('html').css('overflow', '');
