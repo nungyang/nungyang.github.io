@@ -29,8 +29,13 @@ $(window).on('load', function() {
     function snapForward() {
         snapping = true;
         hasSnappedForward = true;
-        $('#nav').show();
+        $('#nav').css('display', 'flex');
         $('html').animate({ scrollTop: getSnapTarget() }, 400, function() {
+            if (window.innerHeight <= 450) {
+                window.scrollBy(0, 65);
+            } else if (window.innerHeight <= 600) {
+                window.scrollBy(0, 50);
+            }
             setTimeout(function() {
                 $('html').css('overflow', '');
                 snapping = false;
