@@ -4760,7 +4760,7 @@ body {
     }
 }
 
-@media screen and (max-height: 550px) {
+@media screen and (max-height: 575px) {
     .intro-bottom {
         display: none;
     }
