@@ -82,7 +82,7 @@ $(window).on('load', function() {
             if (diff > 30) {
                 snapForward();
             }
-        } else if (scrollTop < 50) {
+        } else if (scrollTop < 20) {
             snapBack();
         }
     }, { passive: true });
