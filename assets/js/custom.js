@@ -14,7 +14,7 @@ $(window).on('load', function() {
     function getSnapTarget() {
         var offset;
         if (window.innerHeight <= 450) {
-            offset = 80;
+            offset = 125;
         } else if (window.innerHeight <= 600) {
             offset = 110;
         } else {
