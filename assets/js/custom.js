@@ -105,13 +105,4 @@ $(window).on('load', function() {
         snapForward();
     });
 
-    if (isMobile) {
-        setInterval(function() {
-            if (!hasSnappedForward || snapping) return;
-            if (window.pageYOffset <= 400) {
-                snapBack();
-            }
-        }, 200);
-    }
-
 });
