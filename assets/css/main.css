@@ -4712,14 +4712,11 @@ input, select, textarea {
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
+		margin: 5rem;
 	}
 
 	.intro-bottom {
-		position: absolute;
-		bottom: 1.5rem;
-		left: 0;
-		right: 0;
-		text-align: center;
+		position: relative;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
@@ -4730,6 +4727,7 @@ input, select, textarea {
 		line-height: 0.5;
 		margin: 0;
 		padding: 0;
+		margin-top: 9rem;
 	}
 
 body {
