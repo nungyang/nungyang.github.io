@@ -4760,3 +4760,12 @@ body {
     }
 }
 
+@media screen and (max-height: 390px) {
+    #header .logo {
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: none !important;
+        transition: none !important;
+    }
+}
+
