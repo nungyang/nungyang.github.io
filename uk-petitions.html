@@ -8,42 +8,86 @@
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 		<style>
 			#main > *,
-			#main header,
 			#main h2,
 			#main h3 {
 				border: none !important;
 				border-bottom: none !important;
 			}
-			git log --oneline
+
+			#main a {
+				border-bottom-style: solid !important;
+			}
+
 			#main h2:after,
 			#main h3:after,
 			#main header:after {
 				content: none !important;
 				display: none !important;
 			}
-			
-			#main > * header,
+
 			#main header {
-				margin: 0 0 0.5rem 0 !important;
+				margin: 0 0 1rem 0 !important;
 				padding-bottom: 0 !important;
 			}
-			
-			#main header p {
-				margin-bottom: 0.2rem !important;
+
+			#main header:has(h3) {
+				margin-top: 0.25rem !important;
+				margin-bottom: 0.5rem !important;
+				padding-top: 2.5rem !important;
+			}
+
+			#main header.major {
+				--major-pad: 4rem;
+				padding-top: var(--major-pad) !important;
+				padding-bottom: calc(var(--major-pad) / 2) !important;
+			}
+
+			@media screen and (max-width: 736px) {
+				#main header.major {
+					--major-pad: 2rem;
+				}
 			}
 			
 			#main header + p {
 				margin-top: 0.2rem !important;
+			}
+
+			#main p {
+				margin: 0 0 1.25rem 0 !important;
 				padding-top: 0 !important;
+				padding-bottom: 0 !important;
 			}
 
-			#main > p {
-				margin-bottom: 0.5rem !important;
-				padding-bottom: 0.5rem !important;
+			#main ul:not(.actions) {
+				padding-top: 0rem !important;
+				padding-bottom: 1.25rem !important;
+				padding-left: 6rem !important;
+			}
+
+			#main ul.actions {
 				padding-top: 0.5rem !important;
+				padding-bottom: 0.5rem !important;
 			}
 
-			
+			#main > *:last-child,
+			#main ul:not(.actions):last-child {
+				padding-bottom: 3rem !important;
+			}
+
+			#main sup a,
+			#main .backref {
+				border-bottom: none !important;
+			}
+
+			#main ol.footnotes {
+				font-size: 0.85rem;
+				padding-top: 0 !important;
+				padding-left: 5rem !important;
+			}
+
+			#main ol.footnotes li {
+				margin-bottom: 0.5rem;
+			}
 		</style>
 	</head>
 	<body class="is-preload">
@@ -68,20 +112,38 @@
 						</ul>
 					</nav>
 
-				<!-- Main -->
 					<div id="main">
-						<header class="major">
-							<h2>UK Parliament Petitions Dashboard</h2>
-						</header>
-
-						<!-- Text -->
-							<header>
-								<h3>Project description</h3>
+							<!-- Intro -->
+							<header class="major">
+								<h2>UK Parliament Petitions Dashboard</h2>
 							</header>
-							<p>The UK Government and Parliament Petitions website hosts numerous petitions,
-								each calling for a change in UK Government policy or legislation.
-								Unlike other petition websites, any petition that has over 10,000 signatures receives a written response from the government,
-								while those that have over 100,000 signatures are considered for debate in Parliament.
+							<ul class="actions special">
+								<li><a href="https://uk-petitions-dashboard.up.railway.app/"
+									class="button"
+									style="font-size: 1rem">Go to dashboard</a></li>
+							</ul>
+							<!-- Text -->
+							 <header>
+								<h3>Summary</h3>
+							 </header>
+							 <p>
+								The UK Petitions Dashboard has been designed as a tool to help MPs and their staff make better
+								use of publicly available data on UK e-petitions, by presenting key statistics in a more accessible way.
+							</p>
+							<header>
+								<h3>Background</h3>
+							</header>
+							<p>The <a href = "https://petition.parliament.uk/"> UK Government and Parliament Petitions</a>
+								website hosts numerous petitions, each calling for a change in Government policy or legislation.
+								Unlike other petition websites, such as Change.org, any petition that has over 10,000 signatures
+								receives a written response from the Government, while those that have over 100,000 signatures
+								are considered for debate in Parliament.
+							</p>
+							<p>
+								The UK Petitions website hosts data on the number of
+								signatures for each petition, including a breakdown by constituency. That data can be accessed
+								by navigating to each individual petition page, but there is currently no easy way of gaining an
+								overview of that data, especially at the constituency level.
 							</p>
 							<p>
 								Data on the number of signatures for each petition is publicly available at the constituency level,
@@ -89,12 +151,71 @@
 								This information would help MPs better understand and represent the views of their constituents.
 								The purpose of this project is to make this information more easily accessible to MPs and their staff.
 							</p>
-						
-						<ul class="actions special">
-							<li><a href="https://uk-petitions-dashboard.up.railway.app/"
-								class="button"
-								style="font-size: 1rem";>Go to dashboard</a></li>
-						</ul>
+							<header>
+								<h3>Motivation behind the UK Petitions Dashboard</h3>
+							</header>
+							<p>
+								The aim of the UK Petitions Dashboard is to make that data more accessible for MPs and their staff.
+								Petition data serves as a useful temperature check to gauge how pertinent various issues are
+								in any given constituency and how that compares to another.
+							</p>
+							<p>
+								While there are some shortcomings
+								to petition data (detailed below), there is a clear case for making better use of it. Firstly,
+								as mentioned above, petition data is used by the Petitions Committed to decide whether to hold
+								a debate on that topic or not. If it is used to make a decision on parliamentary agenda, it is
+								worth MPs and their staff having a better idea of emerging trends from petition data. Secondly,
+								public engagement with e-petitions is high, with some garnering millions of signatures.<sup><a href="#fn1" id="fnref1">1</a></sup> It is
+								therefore important to be aware of the issues being raised through petitions. Finally, given
+								that petition data is so readily available, it is a missed opportunity to not make better use of it.
+							</p>
+							<p>
+								There are several web applications that already exist, created by individuals or organisations, independently of the
+								Government and Parliament. For example, there is the <a href = https://ukpetitiontracker.com/>UK Petitions Tracker</a>
+								and <a href = https://ukpetitions.parall.ax/>Parallax's UK Petitions Explorer</a>.
+							</p>
+							<p>However, these petition trackers are not usually designed specifically for MPs and their staff.
+								The UK Petitions Dashboard seeks to fill this gap. As such, the Dashboard will:
+								<ul>
+									<li>Primarily provide a constituency level overview</li>
+									<li>Make sure insights are compact and concise, giving a snapshot view of key statistics; and</li>
+									<li>Include metrics to help MPs stay ahead of emerging trends, for example by highlighting petitions
+										that are likely to reach the threshold for debate weeks before it reaches that point. [Currently in development].</li>
+								</ul>
+							</p>
+							<header>
+								<h3>Planned updates to dashboard</h3>
+							</header>
+							<p>
+								The UK Petitions Dashboard is currently in its early stages. There are plans to develop further features
+								to make it a more useful tool. Planned updates include:
+							</p>
+							<ul>
+								<li>Allowing MPs and their staff to sign up to a mailing list that provides a monthly overview of key statistics</li>
+								<li>Using archived daily statistics to create a forecast of the petitions that are likely to meet the threshold for debate</li>
+								<li>Develop better metrics, for example, to flag petitions which petitions are following an unusual trajectory</li>
+							</ul>
+							<p>For any other suggestions, please email <a href="mailto:ukpetitionsdashboard@gmail.com">ukpetitionsdashboard@gmail.com</a>.</p>
+							<header>
+								<h3>Note on data</h3>
+								<h4>Shortcomings of petition data</h4>
+							</header>
+							<p>
+								There are a few shortcomings to petition data that should be taken into consideration when using the dashboard:
+							</p>
+							<ul>
+								<li>There is currently no mechanism to stop one person signing the same petition twice,
+									which means the number of signatures may be inflated.</li>
+								<li>Since these petitions are held online, it is likely to be underrepresenting the views
+									of older constituents.</li>
+							</ul>
+							<header>
+								<h3>References</h3>
+							</header>
+							<ol class="footnotes">
+								<li id="fn1">William Goodhind, '<a href="https://blogs.lse.ac.uk/politicsandpolicy/why-the-uks-e-petitions-platform-is-not-living-up-to-its-democratic-potential/">Why the UK's e-petitions platform is not living up to its democratic potential</a>', <em>LSE Blogs</em>, 2023 [accessed 15 July 2026]; Cristina Leston-Bandeira and Viktoria Spaiser, '<a href="https://blogs.ucl.ac.uk/constitution-unit/2019/02/19/do-parliamentary-e-petitions-debates-enhance-public-engagement/">Do parliamentary e-petitions debates enhance public engagement?</a>', <em>The Constitution Society</em>, 2019 [accessed 15 July 2026]; Cristina Leston-Bandeira, '<a href="https://blogs.lse.ac.uk/politicsandpolicy/what-is-the-point-of-petitions/">What is the point of petitions in British politics?</a>', <em>LSE Blogs</em>, 2019 [accessed 15 July 2026]. <a href="#fnref1" class="backref">&#8617;</a></li>
+							</ol>
+
 					</div>
 
 
